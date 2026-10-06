@@ -103,7 +103,7 @@ func handleSolanaRequest(ctx *fasthttp.RequestCtx) {
 
 func MetricsMiddleware(next fasthttp.RequestHandler) fasthttp.RequestHandler {
 	return func(ctx *fasthttp.RequestCtx) {
-		count := atomic.AddUint64(&RequestCount, 1)
+		atomic.AddUint64(&RequestCount, 1)
 		// log.Printf("Request count: %d", count)
 		next(ctx)
 	}
